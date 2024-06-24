@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управління каталогом фільмів</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Управління каталогом фільмів</h1>
+        <div class="mb-3">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#movieModal" onclick="clearForm()">Додати фільм</button>
+        </div>
+        <div class="mb-3">
+            <input type="text" id="searchInput" class="form-control" placeholder="Пошук фільму..." onkeyup="searchMovie()">
+        </div>
+        <div class="mb-3">
+            <select id="sortSelect" class="form-select" onchange="sortMovies()">
+                <option value="">Сортувати за...</option>
+                <option value="title">Назва</option>
+                <option value="year">Рік випуску</option>
+            </select>
+        </div>
+        <div id="movieList" class="row"></div>
+    </div>
+
+    <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="movieModalLabel">Додавання фільму</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="movieForm">
+                        <input type="hidden" id="movieId">
+                        <div class="mb-3">
+                            <input type="text" id="title" class="form-control" placeholder="Назва фільму" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="number" id="year" class="form-control" placeholder="Рік випуску" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="country" class="form-control" placeholder="Країна виробництва" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="director" class="form-control" placeholder="Режисер" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="actors" class="form-control" placeholder="Актори" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="genre" class="form-control" placeholder="Жанри" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="file" id="image" class="form-control" placeholder="Зображення" accept="image/*">
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-success">Підтвердити</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Скасувати</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
